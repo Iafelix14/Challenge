@@ -18,7 +18,7 @@ Para começar a usar o projeto, faça um clone do repositório para a sua máqui
 ```bash
 git clone https://github.com/seu-usuario/nome-do-repositorio.git
 
- ### Projeto:
+  ### Projeto:
 
 - **Funcionalidades**:
 	•	Sorteio de Amigos Secretos: A aplicação realiza o sorteio de amigos secretos entre os participantes.
@@ -28,4 +28,3 @@ git clone https://github.com/seu-usuario/nome-do-repositorio.git
 - 
 - **Licença**: Este projeto não possui uma licença específica, então fique à vontade para usar e modificar o código, mas sempre dando créditos ao projeto original.
 
-Você pode ajustar o texto conforme o seu contexto ou necessidades específicas do projeto!
