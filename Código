@@ -1,0 +1,57 @@
+// Função principal para rodar o amigo secreto
+async function amigoSecreto(participantes) {
+    // Verifica se o número de participantes é suficiente
+    if (participantes.length < 2) {
+        console.log("É necessário pelo menos duas pessoas para jogar.");
+        return;
+    }
+
+    // Embaralha os participantes
+    const embaralhados = embaralhar(participantes);
+
+    // Gera o mapa de amigo secreto
+    const amigos = new Map();
+
+    for (let i = 0; i < participantes.length; i++) {
+        const pessoa = participantes[i];
+        let amigo;
+        
+        // Garante que ninguém tire a si mesmo
+        do {
+            amigo = embaralhados[Math.floor(Math.random() * embaralhados.length)];
+        } while (amigo === pessoa || amigos.has(amigo));
+
+        amigos.set(pessoa, amigo);
+    }
+
+    // Exibe os resultados
+    await mostrarAmigosSecretos(amigos);
+}
+
+// Função para embaralhar um array
+function embaralhar(array) {
+    const embaralhado = [...array];
+    for (let i = embaralhado.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [embaralhado[i], embaralhado[j]] = [embaralhado[j], embaralhado[i]]; // Troca
+    }
+    return embaralhado;
+}
+
+// Função para mostrar os amigos secretos
+async function mostrarAmigosSecretos(amigos) {
+    for (let [pessoa, amigo] of amigos) {
+        console.log(`${pessoa} tirou ${amigo}!`);
+        await delay(500); // Delay para dar tempo de visualizar a resposta
+    }
+}
+
+// Função para simular um atraso (como se fosse uma "espera" para cada revelação)
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// Exemplo de uso com um array de participantes
+const participantes = ["Alice", "Bob", "Carlos", "Diana", "Eva"];
+
+amigoSecreto(participantes);
